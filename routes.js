@@ -9,10 +9,10 @@ const client = new MongoClient(process.env.CONNECTION_URI);
 router.get('/', (req, res, next) => {
     try {
         res.send('Hello World')
-     } catch (error) {
-         res.json({ success : false, data : error})
-     }
-     next()
+    } catch (error) {
+        res.json({ success : false, data : error})
+    }
+    next()
 })
 
 router.get('/designs', async (req, res, next) => {
