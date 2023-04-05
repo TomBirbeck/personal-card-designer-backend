@@ -14,17 +14,15 @@ export const addNewDesign = async (client, newDesign) => {
 }
 
 
-export async function findOne(client, database, collection) {
+export async function findDesigns(client, database, collection) {
     try {
-        const result = await client.db(database).collection(collection).findOne();
+        const result = await client.db(database).collection(collection).find().limit(20).toArray();
         if (result) {
-            return result
-        } else {
-            console.log(`No listings found in ${database}`);
+            return await result
+        } 
+        } catch (e) {
+            console.error(e);
+        } finally {
+            await client.close();
         }
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
 }
