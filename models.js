@@ -8,11 +8,8 @@ export const addNewDesign = async (client, newDesign) => {
         return result
     } catch(e) {
         console.error(e);
-    } finally {
-        await client.close();
     }
-}
-
+    }
 
 export async function findDesigns(client, database, collection) {
     try {
@@ -22,7 +19,5 @@ export async function findDesigns(client, database, collection) {
         } 
         } catch (e) {
             console.error(e);
-        } finally {
-            await client.close();
-        }
+        } 
 }
