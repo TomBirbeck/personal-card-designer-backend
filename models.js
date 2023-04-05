@@ -1,8 +1,8 @@
-// import { MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb';
 import 'dotenv/config';
-// const client = new MongoClient(process.env.CONNECTION_URI);
+const client = new MongoClient(process.env.CONNECTION_URI);
 
-export const addNewDesign = async (client, newDesign) => {
+export const addNewDesign = async (newDesign) => {
     try {
         await client.connect()
         const result = await client.db("u_card").collection("designs").insertOne(newDesign);
@@ -12,12 +12,12 @@ export const addNewDesign = async (client, newDesign) => {
     }
 }
 
-export async function findDesigns(client, database, collection) {
+export const findDesigns = async (database, collection) => {
     try {
         await client.connect()
         const result = await client.db(database).collection(collection).find().limit(20).toArray();
         if (result) {
-            return await result
+            return result
         } 
         } catch (e) {
             console.error(e);
