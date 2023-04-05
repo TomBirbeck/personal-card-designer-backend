@@ -1,12 +1,12 @@
 import 'dotenv/config';
 
 export const addNewDesign = async (client, newDesign) => {
-        const result = await client.db("u_card").collection("designs").insertOne(newDesign);
+        const result = await client.db("u_card").admin().collection("designs").insertOne(newDesign);
         return result
 }
 
 export const findDesigns = async (client, database, collection) => {
-        const result = await client.db(database).collection(collection).find().limit(20).toArray();
+        const result = await client.db(database).admin().collection(collection).find().limit(20).toArray();
         return result
        
 }
