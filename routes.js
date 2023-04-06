@@ -5,25 +5,25 @@ import { addNewDesign, findDesigns, listDatabases } from "./models.js";
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+// router.get('/', async (req, res, next) => {
 
-        const client = new MongoClient(process.env.CONNECTION_URI);
+//         const client = new MongoClient(process.env.CONNECTION_URI);
         
-        try {
-            await client.connect();
-            const data = await listDatabases(client);
-            res.json({success: true, message: "client connection working"})
+//         try {
+//             await client.connect();
+//             const data = await listDatabases(client);
+//             res.json({success: true, message: "client connection working"})
             
-        } catch(e) {
-            console.error(e);
-        } finally {
-            await client.close();
-        }
+//         } catch(e) {
+//             console.error(e);
+//         } finally {
+//             await client.close();
+//         }
 
-        next()
-    })
+//         next()
+//     })
     
-    router.get('/designs', async (req, res, next) => {
+    router.get('/', async (req, res, next) => {
 
     const client = new MongoClient(process.env.CONNECTION_URI);
 
